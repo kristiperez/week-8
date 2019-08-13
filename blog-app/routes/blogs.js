@@ -30,6 +30,7 @@ router.get('/edit-blog/:blogid',(req,res) => {
     let blogid = req.params.blogid
     db.one('SELECT blogid,title,body,author FROM blogs WHERE blogid = $1', [blogid])
     .then((blog) => {
+        console.log(blog)
         res.render('edit-blog', blog)
     })
     
