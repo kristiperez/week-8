@@ -1,0 +1,24 @@
+<html>
+<head>
+<link rel="stylesheet" href="/styles.css" >
+</head>
+<body>
+{{>menu}}
+<h2>Dashboard</h2>
+
+{{#blogs}}
+
+
+    <h3>{{title}}</h3>
+    <label>{{author}}</label>
+    <p>{{body}}</p>
+    <h6>{{created}}</h6>
+    
+
+
+{{/blogs}}
+
+
+</body>
+
+</html>

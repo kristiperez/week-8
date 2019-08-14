@@ -1,17 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcrypt')
-const Models = require('./models') //why do you have to use the dot here
-
-// const session = require('express-session')
-// const io = require('socket.io')(http)
-
-// app.use(session({
-//     secret: 'keyboard cat',
-//     resave: false,
-//     saveUninitialized: true,
-// }))
-
+const Models = require('../models') //why do you have to use the dot here
 
 let users = []
 
@@ -47,7 +37,7 @@ router.post('/login',(req,res) => {
             bcrypt.compare(password,user.password).then(function(result) {
                 if(result) { //if password matches
                     //put the userid or username in session
-                    // req.session.user = { userId: user.userid, username: user.username }
+                    req.session.user = { userId: user.userid, username: user.username }
                     res.redirect('/')
                 } else {
                     res.render('login', {message: 'Invalid username or password'})
@@ -59,6 +49,16 @@ router.post('/login',(req,res) => {
         // what is the catch scenario here...??
     }).catch(error => res.render('login', {message: 'Invalid'}))
 
+})
+
+router.get('/my-blogs',(req,res) => {
+
+    let userId = req.session.user.userId
+    db.any('SELECT blogid,title,body,author FROM blogs WHERE userid = $1',[userId])
+    .then((blogs) => {
+
+        res.render('my-blogs',{blogs:blogs})
+    })
 })
 
 router.get('/dashboard',(req,res) => {

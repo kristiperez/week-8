@@ -10,8 +10,9 @@ router.post('/add-blog',(req,res) => {
     let title = req.body.title
     let body = req.body.article
     let author = req.body.author
+    let userId = req.session.user.userId
 
-    db.none('INSERT INTO blogs(title,body,author) VALUES($1,$2,$3)',[title,body,author]
+    db.none('INSERT INTO blogs(title,body,author,userid) VALUES($1,$2,$3,$4)',[title,body,author,userId]
     ).then(() => {
         res.redirect('/')
     })

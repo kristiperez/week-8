@@ -5,10 +5,19 @@ const path = require('path')
 const blogsRouter = require('./routes/blogs')
 const indexRouter = require('./routes/index')
 
+const session = require('express-session')
+
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+}))
 
 var pgp = require('pg-promise')();
 var connectionString = 'postgres://localhost:5432/blogdb';
 global.db = pgp(connectionString)
+
+
 
 app.use(express.urlencoded())
 app.use('/', blogsRouter)
