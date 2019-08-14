@@ -1,0 +1,23 @@
+body {
+    font-family: sans-serif;
+    background-image: linear-gradient(#a29bfe,white);
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    padding: 15px 20px 15px 25px;
+}
+
+nav {
+    display: flex;
+    background-color: #323232;
+    justify-content: left;
+    padding: 0 15px;
+}
+
+label {
+    font-size: 10pt;
+    font-style: italic;
+    color: darkslategray;
+}

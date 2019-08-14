@@ -1,0 +1,28 @@
+<html>
+<head>
+<link rel="stylesheet" href="/styles.css" >
+</head>
+<body>
+{{>menu}}
+<h2>Blog Posts</h2>
+
+{{#blogs}}
+
+<form action='/delete-blog' method="POST">
+    <h3>{{title}}</h3>
+    <label>{{author}}</label>
+    <p>{{body}}</p>
+    <h6>{{created}}</h6>
+    <button>Delete</button>
+    <input type="hidden" name="blogId" value="{{blogid}}" />
+    <a href="/edit-blog/{{blogid}}">
+        <button type="button">Edit</button></a>
+
+</form>
+
+{{/blogs}}
+
+
+</body>
+
+</html>
