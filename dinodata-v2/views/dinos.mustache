@@ -1,0 +1,17 @@
+{{>header}}
+{{>menu}}
+
+<h2>Dinosaur Directory</h2>
+<div class="container">
+
+{{#dinos}}
+<div id='dinoListDiv'>
+<h3>{{name}}</h3>
+<img src="/{{imageurl}}" />
+<a href="/dino-detail/{{id}}"><button class="btn btn-secondary btn-sm">Details </button></a>
+
+
+</div>
+{{/dinos}}
+</div>
+{{>footer}}
